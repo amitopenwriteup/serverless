@@ -1,0 +1,22 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: showcase
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+        - image: quay.io/openshift-knative/showcase
+          env:
+            - name: GREET
+              value: Ciao
+  traffic:
+  - tag: stable
+    revisionName: showcase-revision-1
+    percent: 70
+  - tag: canary
+    revisionName: showcase-revision-2
+    percent: 30
+  - latestRevision: true
+    percent: 0

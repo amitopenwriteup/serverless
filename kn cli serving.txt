@@ -1,0 +1,21 @@
+kn service create showcase --image quay.io/openshift-knative/showcase 
+
+kn service describe showcase
+
+kn service delete showcase
+
+#Set the minimum number of replicas for the service by using the --scale-min flag:
+
+kn service create showcase --image quay.io/openshift-knative/showcase --scale-min 2
+
+kn service describe showcase
+
+kn service delete showcase
+
+#Set the maximum number of replicas for the service by using the --scale-max flag:
+
+kn service create showcase --image quay.io/openshift-knative/showcase --scale-max 10
+
+kn service describe showcase
+
+kn service delete showcase
